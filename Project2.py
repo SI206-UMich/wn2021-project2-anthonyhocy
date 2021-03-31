@@ -14,6 +14,13 @@ def get_titles_from_search_results(filename):
 
     [('Book title 1', 'Author 1'), ('Book title 2', 'Author 2')...]
     """
+    url = 'search_results.htm'
+    r = requests.get(url)
+    soup = BeautifulSoup(r.content, 'html.parser')
+
+    book_names = soup.find('span', itemprop_="name", role_="heading", aria-level="4")
+
+    
 
     pass
 
