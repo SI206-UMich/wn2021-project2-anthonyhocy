@@ -17,7 +17,7 @@ def get_titles_from_search_results(filename):
     soup = BeautifulSoup(infile, 'html.parser')
     infile.close()
 
-    titles = []
+    bookTitles = []
     rows = soup.find_all("tr", itemtype="http://schema.org/Book")
 
     for row in rows:
@@ -28,9 +28,9 @@ def get_titles_from_search_results(filename):
         author = row.find("a", class_="authorName")
         authorName = author.find("span", itemprop="name")
 
-        titles.append((bookTitle.text.strip(), authorName.text.strip()))
+        bookTitles.append((bookTitle.text.strip(), authorName.text.strip()))
         
-    return titles
+    return bookTitles
 
 
 def get_search_links():
