@@ -84,7 +84,15 @@ def summarize_best_books(filepath):
 
 def write_csv(data, filename):
     
+    with open(filename, mode='w') as csvfile:
 
+        dataWriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        dataWriter.writerow(["Book title", "Author Name"])
+        
+        for line in data:
+            dataWriter.writerow([line[0], line[1]])
+
+    csvfile.close()
 
 def extra_credit(filepath):
     """
